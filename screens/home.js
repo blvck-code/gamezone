@@ -1,22 +1,41 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Button, Image, Text, View } from "react-native";
+import React, { useState } from "react";
+import { FlatList } from "react-native";
+import { TouchableOpacity } from "react-native";
+import { globalStyles } from "../styles/global";
+import { SafeAreaView } from "react-navigation";
 
-const Home = () => {
+const Home = ({ navigation }) => {
+  const [posts, setPosts] = useState([
+    {
+      title: "Zelda, Breath of Fresh Air",
+      img: "assets/img1.JPG",
+      id: "1",
+    },
+    {
+      title: "Zelda, Breath of Fresh Air",
+      img: "assets/img1.JPG",
+      id: "3",
+    },
+    {
+      title: "Zelda, Breath of Fresh Air",
+      img: "assets/img1.JPG",
+      id: "3",
+    },
+  ]);
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Home Screen</Text>
-    </View>
+    <SafeAreaView>
+      <FlatList
+        data={posts}
+        renderItem={({ item }) => (
+          <View>
+            <Image source={require("./img1.JPG")} />
+            <Text>123</Text>
+          </View>
+        )}
+      />
+    </SafeAreaView>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 30,
-  },
-  titleText: {
-    fontFamily: "nunito-bold",
-    fontSize: 18,
-  },
-});
